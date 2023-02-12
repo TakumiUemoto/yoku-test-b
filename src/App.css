@@ -1,3 +1,6 @@
+div {
+  width: 600px;
+}
 
 .addButton  {
   display: inline-block;
@@ -6,7 +9,7 @@
   margin: 5px;
   color: white;
   font-size: 1.6em;
-  background-color: #0000e6;
+  background-color: darkblue;
 }
 
 .deleteButton {
@@ -18,14 +21,14 @@
   padding: 10px 18px;
   color: white;
   font-size: 1.6em;
-  background-color: #0000e6;
+  background-color: darkblue;
 }
 
 .input  {
   display: inline-block;
   position: relative;
   text-align: center;
-  border: 1.5px solid #0000e6;
+  border: 1.5px solid darkblue;
   width: 400px;
   height: 45px;
   margin: 5px;

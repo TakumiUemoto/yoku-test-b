@@ -17,7 +17,7 @@ const TodoList = () => {
         }
     ];
 
-    const [todos, setTodos] = useState(initialState);
+    const [todo, setTodo] = useState(initialState);
     const [task, setTask] = useState("");
 
     const handleNewTask = (event) => {
@@ -27,14 +27,14 @@ const TodoList = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (task === "") return;
-        setTodos((todos) => [...todos, { task, isCompleted: false }]);
+        setTodo((todo) => [...todo, { task, isCompleted: false }]);
         setTask("");
     };
 
     const handleRemoveTask = (index) => {
-        const newTodos = [...todos];
-        newTodos.splice(index, 1);
-        setTodos(newTodos);
+        const newTodo = [...todo];
+        newTodo.splice(index, 1);
+        setTodo(newTodo);
     };
 
     return (
@@ -46,7 +46,7 @@ const TodoList = () => {
                 </button>
             </form>
             <ul>
-                {todos.map((todo, index) => (
+                {todo.map((text, index) => (
                 <li key={index} className="li">
                     <button
                     onClick={() => {
@@ -56,7 +56,7 @@ const TodoList = () => {
                     >
                     X
                     </button>
-                    {todo.task}
+                    {text.task}
                 </li>
                 ))}
             </ul>
