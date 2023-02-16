@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../App.css";
+import styled from "styled-components";
 
 const TodoList = () => {
     const initialState = [
@@ -20,12 +20,12 @@ const TodoList = () => {
     const [todo, setTodo] = useState(initialState);
     const [task, setTask] = useState("");
 
-    const handleNewTask = (event) => {
-        setTask(event.target.value);
+    const handleNewTask = (e) => {
+        setTask(e.target.value);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (task === "") return;
         setTodo((todo) => [...todo, { task, isCompleted: false }]);
         setTask("");
@@ -38,30 +38,81 @@ const TodoList = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input className="input" value={task} onChange={handleNewTask} />
-                <button type="submit" className="addButton">
+        <Container>
+            <Form onSubmit={handleSubmit}>
+                <Input value={task} onChange={handleNewTask} />
+                <AddButton type="submit" >
                 追加
-                </button>
-            </form>
+                </AddButton>
+            </Form>
             <ul>
                 {todo.map((text, index) => (
-                <li key={index} className="li">
-                    <button
-                    onClick={() => {
-                        handleRemoveTask(index);
-                    }}
-                    className="deleteButton"
-                    >
-                    X
-                    </button>
+                <Li key={ index }>
+                    <DeleteButton
+                    onClick={() => {handleRemoveTask(index);}}>
+                        X
+                    </DeleteButton>
                     {text.task}
-                </li>
+                </Li>
                 ))}
             </ul>
-        </div>
+        </Container>
     );
 };
+const Container = styled.div`
+    margin: 100px;
+    width: 700px;
+`;
+
+const Form = styled.form`
+    margin: 60px 40px;
+`;
+
+const Input = styled.input`
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    border: 1.5px solid darkblue;
+    width: 365px;
+    height: 45px;
+    margin: 5px;
+    font-size: 30px;
+    padding-left: 40px;
+`;
+
+const AddButton = styled.button`
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 5px;
+    color: white;
+    font-size: 1.6em;
+    background-color: darkblue;
+    border: none;
+`;
+
+const DeleteButton = styled.button`
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    vertical-align: middle;
+    padding: 10px 18px;
+    color: white;
+    font-size: 1.6em;
+    background-color: darkblue;
+    border: none;
+`;
+
+const Li = styled.li`
+    display: inline-block;
+    line-height: 70px;
+    position: relative;
+    list-style: none;
+    border: 1.5px solid #0000e6;
+    width: 410px;
+    height: 65px;
+    margin: 5px;
+    font-size: 1.6em;
+    padding-left: 90px;
+`;
 
 export default TodoList;
