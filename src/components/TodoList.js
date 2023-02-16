@@ -5,15 +5,12 @@ const TodoList = () => {
     const initialState = [
         {
             task: "Apple",
-            isCompleted: false
         },
         {
             task: "Grape",
-            isCompleted: false
         },
         {
             task: "Strawberry",
-            isCompleted: false
         }
     ];
 
@@ -27,7 +24,7 @@ const TodoList = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (task === "") return;
-        setTodo((todo) => [...todo, { task, isCompleted: false }]);
+        setTodo((todo) => [...todo, { task }]);
         setTask("");
     };
 
